@@ -70,6 +70,14 @@ class TextFileManager:
         else:
             print("Вы уже находитесь в корневой директории.")
 
+    
+    def rename_file(self, current_name, new_name):
+        try:
+            os.rename(os.path.join(self.current_directory, current_name), os.path.join(self.current_directory, new_name))
+            print("Файл", current_name, "переименован в", new_name)
+        except FileNotFoundError:
+            print("Файл", current_name, "не найден!")
+
     def run(self):
         while True:
             command = input("\nВведите команду (help для справки): ").strip().split()
